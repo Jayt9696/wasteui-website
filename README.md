@@ -25,5 +25,5 @@ Static output is written to `dist/` and can be hosted on Cloudflare Pages, Netli
 
 ## Notes
 
-- Demo CTA currently opens `mailto:hello@wasteui.co.uk` — change this in `src/App.tsx` if you use a different inbox or form.
+- Demo CTA currently opens `mailto:support@wasteui.co.uk` — change this in `src/App.tsx` if you use a different inbox or form.
 - Brand assets were copied from the WasteUI product repo (`waste-ui-logo.png`, companion app logos, favicon).

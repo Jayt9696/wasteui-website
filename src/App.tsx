@@ -5,7 +5,7 @@ import yardLogo from "./assets/yard-ui-logo.png";
 import weighbridgeLogo from "./assets/weighbridge-ui-logo.png";
 
 const DEMO_MAIL =
-  "mailto:hello@wasteui.co.uk?subject=WasteUI%20demo%20request";
+  "mailto:support@wasteui.co.uk?subject=WasteUI%20demo%20request";
 
 function useReveal() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -53,7 +53,7 @@ const modules = [
   },
   {
     title: "Compliance",
-    body: "Keep waste transfer notes, carriers licences, permits, and EWC-grade tracking in one place.",
+    body: "Keep waste transfer notes, carriers licences, permits, and EWC-grade tracking ready for Defra digital waste tracking requirements.",
   },
   {
     title: "Accounts & portal",
@@ -270,6 +270,61 @@ export default function App() {
           </div>
         </section>
 
+        {/* DEFRA digital waste tracking */}
+        <section
+          id="defra"
+          className="border-y border-slate-line/60 bg-white py-20 md:py-28"
+        >
+          <div className="mx-auto max-w-6xl px-5 md:px-8">
+            <div className="reveal max-w-2xl">
+              <p className="font-display text-sm font-semibold tracking-[0.18em] text-cyan uppercase">
+                DEFRA digital waste tracking
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
+                Built for the new UK waste tracking rules.
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-ink-soft/80">
+                Mandatory digital waste tracking starts in October 2026 for
+                permitted and licensed receiving sites in England and Wales,
+                with Scotland and Northern Ireland following in January 2027.
+                WasteUI is designed so your day-to-day weighbridge, yard, and
+                transfer workflows line up with Defra’s Digital Waste Tracking
+                Service — without bolting on a separate compliance tool.
+              </p>
+            </div>
+
+            <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
+              {[
+                {
+                  title: "Record what the law expects",
+                  body: "Capture the waste movement details operators must enter into the digital waste tracking system — from load receipt through classification and site records.",
+                },
+                {
+                  title: "Stay ready for October 2026",
+                  body: "Use WasteUI ahead of the mandate so receiving sites, office staff, and weighbridge teams already work from digital records when the regulations take effect.",
+                },
+                {
+                  title: "One operational source of truth",
+                  body: "Orders, tickets, and compliance data stay in the same platform you run the yard from — ready to support Defra reporting and API integration as the service rolls out.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={item.title}
+                  className="reveal"
+                  style={{ transitionDelay: `${index * 80}ms` }}
+                >
+                  <h3 className="font-display text-xl font-semibold text-ink md:text-2xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-ink-soft/75">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA */}
         <section className="relative overflow-hidden bg-steel py-20 md:py-24">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.25),transparent_45%)]" />
@@ -285,7 +340,7 @@ export default function App() {
               href={DEMO_MAIL}
               className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-steel transition hover:bg-mist"
             >
-              Email hello@wasteui.co.uk
+              Email support@wasteui.co.uk
             </a>
           </div>
         </section>
