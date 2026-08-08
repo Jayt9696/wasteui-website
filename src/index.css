@@ -17,11 +17,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     margin: 0;
     min-width: 320px;
+    overflow-x: clip;
     font-family: var(--font-sans);
     color: var(--color-ink);
     background: var(--color-fog);
@@ -29,8 +31,39 @@
     text-rendering: optimizeLegibility;
   }
 
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+  }
+
   ::selection {
     background: color-mix(in srgb, var(--color-cyan) 28%, white);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-rise,
+  .animate-rise-delay-1,
+  .animate-rise-delay-2,
+  .animate-rise-delay-3,
+  .animate-hero-drift,
+  .animate-fade-in {
+    animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
