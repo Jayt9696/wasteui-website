@@ -3,6 +3,7 @@ import logo from "./assets/waste-ui-logo.png";
 import driverLogo from "./assets/driver-ui-logo.png";
 import yardLogo from "./assets/yard-ui-logo.png";
 import weighbridgeLogo from "./assets/weighbridge-ui-logo.png";
+import { ProductScreenStrip } from "./ProductScreens";
 
 const DEMO_MAIL =
   "mailto:support@wasteui.co.uk?subject=WasteUI%20demo%20request";
@@ -83,55 +84,56 @@ export default function App() {
   const pageRef = useReveal();
 
   return (
-    <div ref={pageRef} className="min-h-dvh">
-      <header className="absolute inset-x-0 top-0 z-20">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
-          <a href="#top" className="inline-flex items-center gap-2" aria-label="WasteUI home">
-            <img src={logo} alt="" className="h-8 w-auto brightness-0 invert md:h-9" />
+    <div ref={pageRef} className="min-h-dvh overflow-x-clip">
+      <header className="absolute inset-x-0 top-0 z-20 pt-[env(safe-area-inset-top)]">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-5 md:px-8 md:py-5">
+          <a href="#top" className="inline-flex min-h-11 items-center gap-2" aria-label="WasteUI home">
+            <img src={logo} alt="" className="h-7 w-auto brightness-0 invert sm:h-8 md:h-9" />
           </a>
           <a
             href={DEMO_MAIL}
-            className="rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-ink shadow-sm transition hover:bg-white"
+            className="inline-flex min-h-11 items-center rounded-full bg-white/95 px-3.5 py-2 text-sm font-semibold text-ink shadow-sm transition hover:bg-white sm:px-4"
           >
-            Request a demo
+            <span className="sm:hidden">Demo</span>
+            <span className="hidden sm:inline">Request a demo</span>
           </a>
         </div>
       </header>
 
       <main id="top">
         {/* Hero — brand, headline, support, CTA, full-bleed image */}
-        <section className="relative isolate flex min-h-dvh items-end overflow-hidden">
+        <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden">
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <img
               src="/hero-yard.jpg"
               alt=""
-              className="animate-hero-drift h-full w-full object-cover object-center"
+              className="animate-hero-drift h-full w-full object-cover object-[72%_center] sm:object-center"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,18,32,0.45)_0%,rgba(11,18,32,0.35)_38%,rgba(11,18,32,0.82)_100%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(8,145,178,0.28),transparent_55%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,18,32,0.28)_0%,rgba(11,18,32,0.22)_40%,rgba(11,18,32,0.72)_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(8,145,178,0.22),transparent_55%)]" />
           </div>
 
-          <div className="mx-auto w-full max-w-6xl px-5 pb-16 pt-28 md:px-8 md:pb-20 md:pt-32">
-            <p className="animate-rise font-display text-sm font-semibold tracking-[0.22em] text-cyan-bright uppercase">
+          <div className="mx-auto w-full max-w-6xl px-4 pb-[max(3.5rem,env(safe-area-inset-bottom))] pt-24 sm:px-5 sm:pb-16 md:px-8 md:pb-20 md:pt-32">
+            <p className="animate-rise font-display text-xs font-semibold tracking-[0.2em] text-cyan-bright uppercase sm:text-sm sm:tracking-[0.22em]">
               WasteUI
             </p>
-            <h1 className="animate-rise-delay-1 mt-4 max-w-3xl font-display text-4xl leading-[1.05] font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="animate-rise-delay-1 mt-3 max-w-3xl font-display text-[2rem] leading-[1.08] font-bold tracking-tight text-white sm:mt-4 sm:text-5xl md:text-6xl lg:text-7xl">
               Waste operations software, built around the yard.
             </h1>
-            <p className="animate-rise-delay-2 mt-5 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
+            <p className="animate-rise-delay-2 mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:mt-5 md:text-lg">
               Self-hosted platform for UK waste operators — office, weighbridge,
               yard, and drivers working from the same system.
             </p>
-            <div className="animate-rise-delay-3 mt-8 flex flex-wrap items-center gap-3">
+            <div className="animate-rise-delay-3 mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
               <a
                 href={DEMO_MAIL}
-                className="inline-flex items-center justify-center rounded-full bg-cyan px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(8,145,178,0.35)] transition hover:bg-[#0e7490]"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-cyan px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(8,145,178,0.35)] transition hover:bg-[#0e7490] sm:w-auto"
               >
                 Request a demo
               </a>
               <a
-                href="#platform"
-                className="inline-flex items-center justify-center rounded-full border border-white/35 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/12"
+                href="#inside"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/35 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/16 sm:w-auto"
               >
                 See the platform
               </a>
@@ -140,17 +142,17 @@ export default function App() {
         </section>
 
         {/* Who it's for */}
-        <section className="relative overflow-hidden bg-fog py-20 md:py-28">
+        <section className="relative overflow-hidden bg-fog py-14 sm:py-20 md:py-28">
           <div className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-cyan/10 blur-3xl" />
           <div className="pointer-events-none absolute bottom-0 left-0 h-64 w-64 rounded-full bg-steel/10 blur-3xl" />
-          <div className="reveal mx-auto max-w-6xl px-5 md:px-8">
+          <div className="reveal mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
             <p className="font-display text-sm font-semibold tracking-[0.18em] text-cyan uppercase">
               Built for operators
             </p>
-            <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
+            <h2 className="mt-3 max-w-2xl font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl md:text-4xl">
               One system for skip hire, collections, haulage, and the tip.
             </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft/80">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft/80 sm:mt-5 sm:text-lg">
               WasteUI connects the office desk to the weighbridge cabin, yard
               inspections, and drivers on the road — so orders, weights,
               compliance, and customer access stay in sync.
@@ -158,29 +160,55 @@ export default function App() {
           </div>
         </section>
 
+        {/* Inside the system — screenshot / UI strip */}
+        <section
+          id="inside"
+          className="relative overflow-hidden bg-ink py-14 text-white sm:py-20 md:py-28"
+        >
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(8,145,178,0.2),transparent_50%)]" />
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
+            <div className="reveal max-w-2xl">
+              <p className="font-display text-sm font-semibold tracking-[0.18em] text-cyan-bright uppercase">
+                Inside WasteUI
+              </p>
+              <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+                See how the system looks day to day.
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-white/70 sm:mt-5 sm:text-lg">
+                From dispatch and the weighbridge to planning and compliance —
+                one platform your office and yard teams actually work in.
+              </p>
+            </div>
+
+            <div className="mt-10 sm:mt-12 md:mt-14">
+              <ProductScreenStrip />
+            </div>
+          </div>
+        </section>
+
         {/* Platform modules — editorial rows, not cards */}
         <section
           id="platform"
-          className="border-y border-slate-line/60 bg-white py-20 md:py-28"
+          className="border-y border-slate-line/60 bg-white py-14 sm:py-20 md:py-28"
         >
-          <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <div className="mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
             <div className="reveal max-w-2xl">
               <p className="font-display text-sm font-semibold tracking-[0.18em] text-cyan uppercase">
                 The platform
               </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
+              <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl md:text-4xl">
                 Everything your team runs day to day.
               </h2>
             </div>
 
-            <div className="mt-14 divide-y divide-slate-line/70">
+            <div className="mt-10 divide-y divide-slate-line/70 sm:mt-14">
               {modules.map((item, index) => (
                 <div
                   key={item.title}
-                  className="reveal grid gap-3 py-8 md:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] md:gap-10"
+                  className="reveal grid gap-2 py-6 sm:gap-3 sm:py-8 md:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] md:gap-10"
                   style={{ transitionDelay: `${index * 60}ms` }}
                 >
-                  <h3 className="font-display text-xl font-semibold text-ink md:text-2xl">
+                  <h3 className="font-display text-lg font-semibold text-ink sm:text-xl md:text-2xl">
                     {item.title}
                   </h3>
                   <p className="text-base leading-relaxed text-ink-soft/75 md:text-lg">
@@ -193,24 +221,24 @@ export default function App() {
         </section>
 
         {/* Companion apps */}
-        <section className="relative overflow-hidden bg-ink py-20 text-white md:py-28">
+        <section className="relative overflow-hidden bg-ink py-14 text-white sm:py-20 md:py-28">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(8,145,178,0.22),transparent_50%)]" />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_40%,rgba(30,58,138,0.35)_100%)]" />
-          <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
             <div className="reveal max-w-2xl">
               <p className="font-display text-sm font-semibold tracking-[0.18em] text-cyan-bright uppercase">
                 Companion apps
               </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-4xl">
+              <h2 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
                 Driver, weighbridge, and yard — connected live.
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-white/70">
+              <p className="mt-4 text-base leading-relaxed text-white/70 sm:mt-5 sm:text-lg">
                 Mobile and cabin apps keep the same jobs moving from booking to
                 tip, without re-keying or chasing paperwork.
               </p>
             </div>
 
-            <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-8">
+            <div className="mt-10 grid gap-10 sm:mt-14 sm:gap-12 md:grid-cols-3 md:gap-8">
               {apps.map((app, index) => (
                 <div
                   key={app.name}
@@ -220,12 +248,12 @@ export default function App() {
                   <img
                     src={app.logo}
                     alt=""
-                    className="h-14 w-auto brightness-0 invert"
+                    className="h-12 w-auto brightness-0 invert sm:h-14"
                   />
-                  <h3 className="mt-6 font-display text-2xl font-semibold">
+                  <h3 className="mt-5 font-display text-xl font-semibold sm:mt-6 sm:text-2xl">
                     {app.name}
                   </h3>
-                  <p className="mt-3 text-base leading-relaxed text-white/65">
+                  <p className="mt-2 text-base leading-relaxed text-white/65 sm:mt-3">
                     {app.body}
                   </p>
                 </div>
@@ -235,21 +263,21 @@ export default function App() {
         </section>
 
         {/* Self-hosted */}
-        <section className="bg-[linear-gradient(160deg,#f4f7fb_0%,#e8eef5_45%,#dce9f2_100%)] py-20 md:py-28">
-          <div className="reveal mx-auto max-w-6xl px-5 md:px-8">
+        <section className="bg-[linear-gradient(160deg,#f4f7fb_0%,#e8eef5_45%,#dce9f2_100%)] py-14 sm:py-20 md:py-28">
+          <div className="reveal mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
             <p className="font-display text-sm font-semibold tracking-[0.18em] text-cyan uppercase">
               Your data, your hosting
             </p>
-            <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
+            <h2 className="mt-3 max-w-2xl font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl md:text-4xl">
               Self-hosted for operators who want control.
             </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft/80">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft/80 sm:mt-5 sm:text-lg">
               Run WasteUI on your own infrastructure. Keep customer records,
               weighbridge tickets, and compliance documents under your control —
               with MFA, secure sessions, and UK-oriented workflows for EWC codes,
               permits, and waste transfer notes.
             </p>
-            <ul className="mt-10 grid gap-4 text-base text-ink-soft sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-8 grid gap-3 text-base text-ink-soft sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               {[
                 "Self-hosted deployment",
                 "MFA for staff & portal users",
@@ -273,17 +301,17 @@ export default function App() {
         {/* DEFRA digital waste tracking */}
         <section
           id="defra"
-          className="border-y border-slate-line/60 bg-white py-20 md:py-28"
+          className="border-y border-slate-line/60 bg-white py-14 sm:py-20 md:py-28"
         >
-          <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <div className="mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
             <div className="reveal max-w-2xl">
               <p className="font-display text-sm font-semibold tracking-[0.18em] text-cyan uppercase">
                 DEFRA digital waste tracking
               </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
+              <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl md:text-4xl">
                 Built for the new UK waste tracking rules.
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-ink-soft/80">
+              <p className="mt-4 text-base leading-relaxed text-ink-soft/80 sm:mt-5 sm:text-lg">
                 Mandatory digital waste tracking starts in October 2026 for
                 permitted and licensed receiving sites in England and Wales,
                 with Scotland and Northern Ireland following in January 2027.
@@ -293,7 +321,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
+            <div className="mt-10 grid gap-8 sm:mt-14 sm:gap-10 md:grid-cols-3 md:gap-8">
               {[
                 {
                   title: "Record what the law expects",
@@ -313,10 +341,10 @@ export default function App() {
                   className="reveal"
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
-                  <h3 className="font-display text-xl font-semibold text-ink md:text-2xl">
+                  <h3 className="font-display text-lg font-semibold text-ink sm:text-xl md:text-2xl">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-base leading-relaxed text-ink-soft/75">
+                  <p className="mt-2 text-base leading-relaxed text-ink-soft/75 sm:mt-3">
                     {item.body}
                   </p>
                 </div>
@@ -326,10 +354,10 @@ export default function App() {
         </section>
 
         {/* Final CTA */}
-        <section className="relative overflow-hidden bg-steel py-20 md:py-24">
+        <section className="relative overflow-hidden bg-steel py-14 sm:py-20 md:py-24">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.25),transparent_45%)]" />
-          <div className="reveal relative mx-auto max-w-6xl px-5 text-center md:px-8">
-            <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
+          <div className="reveal relative mx-auto max-w-6xl px-4 text-center sm:px-5 md:px-8">
+            <h2 className="font-display text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-5xl">
               Ready to run the yard from one place?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-white/75 md:text-lg">
@@ -338,7 +366,7 @@ export default function App() {
             </p>
             <a
               href={DEMO_MAIL}
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-steel transition hover:bg-mist"
+              className="mt-7 inline-flex min-h-12 w-full max-w-sm items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-steel transition hover:bg-mist sm:mt-8 sm:w-auto"
             >
               Email support@wasteui.co.uk
             </a>
@@ -346,8 +374,8 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-ink py-8 text-white/55">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-5 sm:flex-row sm:items-center md:px-8">
+      <footer className="border-t border-white/10 bg-ink py-8 pb-[max(2rem,env(safe-area-inset-bottom))] text-white/55">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-5 md:px-8">
           <div className="flex items-center gap-3">
             <img src={logo} alt="WasteUI" className="h-7 w-auto brightness-0 invert" />
             <span className="text-sm">
